@@ -1,0 +1,92 @@
+/* Bfgeshka, 2015-2017 */
+
+/* Palemoon v27, Linux gtk2 dark themed environment */
+/* Heavily modded, consider using Tab Utilities Fixed for best expierence */
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+:root
+{
+	--used_bgcolor: #3b3535;
+	--used_bgcolor_pinned: #854340;
+}
+
+@-moz-document url("chrome://browser/content/browser.xul")
+{
+	/* Minimal navbar size */
+	#nav-bar, #urlbar
+	{
+		box-shadow: none !important;
+		background: none !important;
+		border: 0 !important;
+		padding: 0px 0px 0px 4px !important;
+		-moz-appearance: toolbar !important;
+	}
+
+	/* Tab tricks, Tab Utilities Fixed addon recommended */
+	.tabbrowser-tab
+	{
+		border: 0px !important;
+		border-right: 0px !important;
+		border-radius: 0px !important;
+		background: var(--used_bgcolor) !important;
+		background-image: none !important;
+		-moz-border-image: none !important;
+	}
+	.tabbrowser-tab[pinned="true"]
+	{
+		-moz-padding-end: 6px !important;
+		-moz-padding-start: 6px !important;
+		background: var(--used_bgcolor_pinned) !important;
+	}
+	#alltabs-button, .tabs-newtab-button
+	{
+		-moz-appearance: toolbarbutton !important;
+		width: 12px !important;
+		margin: 0px 0px 12px 0px !important;
+		padding: 0px !important;
+	}
+
+	/* AiOS & overall sidebar */
+	#aios-toolbar
+	{
+		padding: 0px !important;
+	}
+	sidebarheader#sidebar-header
+	{
+		display: none !important;
+	}
+	.search-go-button
+	{
+		display: none !important;
+	}
+
+	/* because */
+	a:active
+	{
+		outline: none !important;
+	}
+	html
+	{
+		overflow: hidden;
+	}
+
+	/* just a bit wider rendered page */
+	#browser
+	{
+		margin: -1px -1px -1px -1px !important;
+	}
+
+	/* Bottom UI */
+	#nav-bar
+	{
+		-moz-box-ordinal-group: 2 !important;
+	}
+	#navigator-toolbox
+	{
+		-moz-box-ordinal-group: 4 !important;
+	}
+	#main-window[sizemode="fullscreen"] #navigator-toolbox[style*="margin-top:"]
+	{
+		visibility: collapse !important;
+	}
+}

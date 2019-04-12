@@ -1,0 +1,49 @@
+{
+    "base-directory": "/home/bfg/i/gdl",
+    "netrc": true,
+    "cache":
+    {
+        "file": "/mnt/tmp/.gallery-dl.cache"
+    },
+    "output":
+    {
+        "mode": "auto",
+        "shorten": false,
+        "progress": "\u001B]0;[{current}\/{total}] {url}\u0007[{current}\/{total}] {url}"
+    },
+    "downloader":
+    {
+        "http":
+        {
+            "retries": 3,
+            "timeout": 45
+        }
+    },
+    "extractor":
+    {
+        "pixiv":
+        {
+            "ugoira": true
+        },
+        "gelbooru":
+        {
+            "filename": "{category}_{id:>07}_{md5}.{extension}"
+        },
+        "deviantart":
+        {
+            "mature": true
+        },
+        "gfycat":
+        {
+            "format": "webm"
+        },
+        "foolfuuka":
+        {
+             "filename": "{category}:{board[shortname]}_{thread_num}_{media[media]}"
+        },
+                "recursive":
+        {
+            "blacklist": ["directlink", "oauth", "recursive", "test"]
+        }
+    }
+}

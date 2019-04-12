@@ -1,0 +1,33 @@
+*/* amd64 ~amd64
+
+sys-apps/* -** amd64
+sys-devel/* -** amd64
+sys-libs/* -** amd64
+
+
+app-misc/rmlint **
+app-misc/screenfetch **
+app-shells/fish **
+app-text/minidjvu **
+dev-util/geany **
+games-action/minetest **
+media-fonts/tewi-font **
+media-gfx/sxiv **
+## media-sound/deadbeef **
+net-misc/aria2 **
+net-misc/youtube-dl **
+sys-devel/gcc **
+sys-process/htop **
+sys-process/scron **
+www-client/palemoon **
+x11-misc/bar **
+x11-misc/bar-xft **
+x11-misc/compton **
+x11-terms/st **
+x11-wm/dwm **
+net-news/newsboat **
+app-emulation/winetricks **
+## x11-misc/spacefm::octopus **
+media-libs/vulkan-loader **
+media-libs/mesa **
+x11-libs/libdrm **

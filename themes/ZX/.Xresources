@@ -1,0 +1,137 @@
+!URxvt*.background:	[0]#2d2d2d
+URxvt*.borderLess:	true
+
+!#define base00 #2d2d2d
+!#define base01 #393939
+!#define base02 #515151
+!#define base03 #747369
+!#define base04 #a09f93
+!#define base05 #d3d0c8
+!#define base06 #e8e6df
+!#define base07 #f2f0ec
+!#define base08 #f2777a
+!#define base09 #f99157
+!#define base0A #ffcc66
+!#define base0B #ffffff
+//#//#99cc99
+!#define base0C #66cccc
+!#define base0D #6699cc
+!#define base0E #cc99cc
+!#define base0F #d27b53
+
+!*.foreground:   base03
+!*.background:   base00
+!*.cursorColor:  base05
+!
+!*.color0:       base00
+!*.color1:       base08
+!*.color2:       base0B
+!*.color3:       base0A
+!*.color4:       base0D
+!*.color5:       base0E
+!*.color6:       base0C
+!*.color7:       base0B
+!
+!*.color8:       base09
+!*.color9:       base09
+!*.color10:      base01
+!*.color11:      base02
+!*.color12:      base04
+!*.color13:      base06
+!*.color14:      base0F
+!*.color15:      base07
+
+
+! --- special colors ---
+
+*background: #000000
+*foreground: #919191
+
+! --- standard colors ---
+
+! black
+*color0: #1a1a1a
+
+! bright_black
+*color8: #363636
+
+! red
+*color1: #6d4338
+
+! bright_red
+*color9: #ba8477
+
+! green
+*color2: #386d43
+
+! bright_green
+*color10: #77ba84
+
+! yellow
+*color3: #636d38
+
+! bright_yellow
+*color11: #acba77
+
+! blue
+*color4: #43386d
+
+! bright_blue
+*color12: #8477ba
+
+! magenta
+*color5: #6d3863
+
+! bright_magenta
+*color13: #ba77ac
+
+! cyan
+*color6: #38636d
+
+! bright_cyan
+*color14: #77acba
+
+! white
+*color7: #919191
+
+! bright_white
+*color15: #bfbfbf
+
+
+!URxvt*.font:					lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1
+!URxvt*.geometry:				196x52
+URxvt*.transparent:				true
+!URxvt*.blurRadius:           	0
+URxvt*.cursorblink:				true
+URxvt*.cursorunderline:			false
+URxvt*.depth:					32
+URxvt*.dynamicColors:			on
+URxvt*.externalborder:			0
+!URxvt*.fading:               	40
+!URxvt*.fading:               	0
+!URxvt*.font:					xft:Tewi:size=6,xft:FontAwesome:size=7
+URxvt*.font:					xft:Tewi:size=9,xft:Iosevka:size=10
+!URxvt*.internalborder:			2
+URxvt*.jumpscroll:				false
+URxvt*.keysym.C-u:				perl:url-select:select_next
+URxvt*.keysym.Control-Shift-Tab:perl:tabbedex:prev_tab
+URxvt*.keysym.Control-t: 		perl:tabbedex:new_tab
+URxvt*.keysym.Control-Tab: 		perl:tabbedex:next_tab
+URxvt*.matcher.button:			1
+URxvt*.mouseWheelScrollpage:	true
+URxvt*.perl-ext-common:			tabbedex,matcher,url-select
+URxvt*.savelines:				900
+URxvt*.scrollBar:				false
+URxvt*.scrollstyle:				plain
+URxvt*.secondaryWheel: 			true
+URxvt*.tabbed.autohide: 		true
+URxvt*.tabbed.new-button: 		false
+URxvt*.tabbed.tab-bg:			3
+URxvt*.tabbed.tab-fg:			0
+URxvt*.tabbed.tabbar-bg:		0
+URxvt*.tabbed.tabbar-fg:		2
+URxvt*.underlineURLs:			true
+URxvt*.url-launcher:			palemoon
+URxvt*.url-select.underline:	true
+!URxvt*.shading:              	0
+!URxvt*.shading:              	110

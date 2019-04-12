@@ -1,0 +1,48 @@
+background        no
+out_to_console    yes
+update_interval   1
+total_run_times   0
+short_units       yes
+uppercase         no
+use_spacer        left
+
+#	special			▲▼ ⮀⮁  ⮃⮂ 
+#	
+#	white			d3d0c8
+#	back_panel		f2f0ec
+#	addit. fore		2d2d2d
+#	addit. back 	515151
+
+TEXT
+%{B\#00000000} \
+${if_up wlan0}%{B\#00000000}%{F\#fff0f0f0}W %{B\#ff515151}%{F\#00f2f0ec}⮀%{F\#ffd3d0c8}${upspeed wlan0} %{F\#ff339933}▲%{F\#ff993333}▼%{F\#ffd3d0c8}${downspeed wlan0} %{F\#ff515151}%{B\#00000000}⮀⮁${endif}\
+${if_up eth0}%{B\#ff515151}%{F\#00f2f0ec}⮀%{F\#ffd3d0c8} ${upspeed eth0} %{F\#00f2f0ec}▲%{F\#ff2d2d2d}▼%{F\#ffd3d0c8}${downspeed eth0} %{F\#ff515151}%{B\#00000000}⮀⮁${endif}\
+${if_match ${battery_percent} < 95 }%{B\#00000000}%{F\#fff0f0f0} ⭫ %{B\#ff515151}%{F\#00f2f0ec}⮀⮁%{F\#ffd3d0c8} $battery_percent%%, $battery_time %{F\#ff515151}%{B\#00000000}⮀⮁${endif}\
+%{B\#ff515151}%{F\#00f2f0ec}⮀%{F\#ffd3d0c8} ${execi 30 $HOME/.dwm/weather.sh} %{F\#ff515151}%{B\#00000000}⮀⮁%{F\#ffd3d0c8}\
+%{B\#ff515151}%{F\#00f2f0ec}⮀%{F\#ffd3d0c8} ${exec amixer get Master | grep -o "[1]*[0-9]*%" | sed -e 's/%/%%/'} %{F\#ff515151}%{B\#00000000}⮀⮁%{F\#ffd3d0c8}\
+%{c} \
+${if_running deadbeef-gtkui} \
+\
+%{A:sh $HOME/.dwm/bar_pr.sh:}\
+%{F\#77515151}%{B\#00000000}⮃%{F\#ff515151}⮃⮂%{F\#ffd3d0c8}%{B\#ff515151}\
+ ⏪ \
+\
+%{F\#00f2f0ec}⮂%{B\#00000000}\
+%{A}\
+\
+%{A3:sh $HOME/.dwm/bar_st.sh:}%{A1:sh $HOME/.dwm/bar_pp.sh:}%{A4:rcsh $HOME/.dwm/bar_volup.sh:}%{A5:rcsh $HOME/.dwm/bar_voldown.sh:}%{A2:rcsh $HOME/.dwm/bar_mute.sh:}\
+%{B\#00000000}%{F\#ff515151}⮂%{F\#ffd3d0c8}%{B\#ff515151}\
+ ${exec deadbeef --nowplaying "%a -- %t  %e/%l" 2>/dev/null} \
+\
+%{F\#ff515151}%{B\#00000000}⮀\
+%{A}%{A}%{A}%{A}%{A}\
+%{A:sh $HOME/.dwm/bar_n.sh:}\
+%{B\#ff515151}%{F\#00f2f0ec}⮀%{F\#ffd3d0c8}\
+ ⏩ \
+%{F\#ff515151}%{B\#00000000}⮀⮁%{F\#77515151}⮁\
+%{A}\
+${endif}\
+%{r}\
+%{F\#ff515151}%{B\#00000000}⮃⮂%{F\#ffd3d0c8}%{B\#ff515151} $mem %{F\#00f2f0ec}⮂\
+%{F\#ff515151}%{B\#00000000}⮃⮂%{F\#ffd3d0c8}%{B\#ff515151} $swap %{F\#00f2f0ec}⮂\
+%{F\#ff515151}%{B\#00000000}⮃⮂%{F\#ffd3d0c8}%{B\#ff515151} $cpu%% %{F\#00f2f0ec}⮂%{B\#00000000} 

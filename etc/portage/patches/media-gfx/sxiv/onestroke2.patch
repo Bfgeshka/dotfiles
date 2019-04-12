@@ -1,0 +1,25 @@
+commit ca340a3310afff6dc6f4b0d34060ff5aea2b036c
+Author: Bfgeshka <bfg@derpy.ru>
+Date:   Sun Sep 3 23:12:00 2017 +0900
+
+    one-stroke predefined funcion part 2
+
+diff --git a/main.c b/main.c
+index d4633de..30b1680 100644
+--- a/main.c
++++ b/main.c
+@@ -608,13 +608,7 @@ void on_keypress(XKeyEvent *kev)
+ 
+ 	if (IsModifierKey(ksym))
+ 		return;
+-//	if (ksym == XK_Escape && MODMASK(kev->state) == 0) {
+-//		extprefix = False;
+-//	} else if (extprefix) {
+-//		run_key_handler(XKeysymToString(ksym), kev->state & ~sh);
+-//		extprefix = False;
+-//	} else if (key >= '0' && key <= '9') {
+-	if ( ( ksym == XK_Escape && MODMASK(kev->state) == 0 ) || ( key >= '0' && key <= '9' ) )
++	if ( ( ksym == XK_Escape && MODMASK(kev->state) == 0 ))
+ 	{
+ 		/* number prefix for commands */
+ 		prefix = prefix * 10 + (int) (key - '0');

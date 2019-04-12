@@ -1,0 +1,48 @@
+background        no
+out_to_console    yes
+update_interval   1
+total_run_times   0
+short_units       yes
+uppercase         no
+use_spacer        left
+
+#	special			▲▼ ⮀⮁  ⮃⮂ 
+#	
+#	white			f1d1c2
+#	back_panel		15161a
+#	addit. fore		b1b1b1
+#	addit. back 	cb2322
+
+TEXT
+%{B\#ff15161a} \
+${if_up wlan0}%{B\#ff15161a}%{F\#ffb1b1b1}W %{B\#ffcb2322}%{F\#ff15161a}⮀%{F\#fff1d1c2}${upspeed wlan0} %{F\#ff339933}▲%{F\#ff993333}▼%{F\#fff1d1c2}${downspeed wlan0} %{F\#ffcb2322}%{B\#ff15161a}⮀⮁${endif}\
+${if_up eth0}%{B\#ff15161a}%{F\#ffb1b1b1}E %{B\#ffcb2322}%{F\#ff15161a}⮀%{F\#fff1d1c2} ${upspeed eth0} %{F\#ff15161a}▲%{F\#ffb1b1b1}▼%{F\#fff1d1c2}${downspeed eth0} %{F\#ffcb2322}%{B\#ff15161a}⮀⮁${endif}\
+${if_match ${battery_percent} < 95 }%{B\#ff15161a}%{F\#ffb1b1b1} ⭫ %{B\#ffcb2322}%{F\#ff15161a}⮀⮁%{F\#fff1d1c2} $battery_percent%%, $battery_time %{F\#ffcb2322}%{B\#ff15161a}⮀⮁${endif}\
+%{B\#ff15161a}%{F\#ffb1b1b1} ☀ %{B\#ffcb2322}%{F\#ff15161a}⮀%{F\#fff1d1c2} ${execi 30 $HOME/.dwm/weather.sh} %{F\#ffcb2322}%{B\#ff15161a}⮀⮁%{F\#fff1d1c2}\
+%{B\#ff15161a}%{F\#ffb1b1b1} S %{B\#ffcb2322}%{F\#ff15161a}⮀%{F\#fff1d1c2} ${exec amixer get Master | grep -o "[1]*[0-9]*%" | sed -e 's/%/%%/'} %{F\#ffcb2322}%{B\#ff15161a}⮀⮁%{F\#fff1d1c2}\
+%{c} \
+${if_running deadbeef-gtkui} \
+\
+%{A:sh $HOME/.dwm/bar_pr.sh:}\
+%{F\#77cb2322}%{B\#ff15161a}⮃%{F\#ffcb2322}⮃⮂%{F\#fff1d1c2}%{B\#ffcb2322}\
+ ⏪ \
+\
+%{F\#ff15161a}⮂%{B\#ff15161a}\
+%{A}\
+\
+%{A3:sh $HOME/.dwm/bar_st.sh:}%{A1:sh $HOME/.dwm/bar_pp.sh:}%{A4:rcsh $HOME/.dwm/bar_volup.sh:}%{A5:rcsh $HOME/.dwm/bar_voldown.sh:}%{A2:rcsh $HOME/.dwm/bar_mute.sh:}\
+%{B\#ff15161a}%{F\#ffcb2322}⮂%{F\#fff1d1c2}%{B\#ffcb2322}\
+ ${exec deadbeef --nowplaying "%a -- %t  %e/%l" 2>/dev/null} \
+\
+%{F\#ffcb2322}%{B\#ff15161a}⮀\
+%{A}%{A}%{A}%{A}%{A}\
+%{A:sh $HOME/.dwm/bar_n.sh:}\
+%{B\#ffcb2322}%{F\#ff15161a}⮀%{F\#fff1d1c2}\
+ ⏩ \
+%{F\#ffcb2322}%{B\#ff15161a}⮀⮁%{F\#77cb2322}⮁\
+%{A}\
+${endif}\
+%{r}\
+%{F\#ffcb2322}%{B\#ff15161a}⮃⮂%{F\#fff1d1c2}%{B\#ffcb2322} $mem %{F\#ff15161a}⮂%{B\#ff15161a}%{F\#ffb1b1b1} ⭦ \
+%{F\#ffcb2322}%{B\#ff15161a}⮃⮂%{F\#fff1d1c2}%{B\#ffcb2322} $swap %{F\#ff15161a}⮂%{B\#ff15161a}%{F\#ffb1b1b1} ⭬ \
+%{F\#ffcb2322}%{B\#ff15161a}⮃⮂%{F\#fff1d1c2}%{B\#ffcb2322} $cpu%% %{F\#ff15161a}⮂%{B\#ff15161a}%{F\#ffb1b1b1} ⭥ 

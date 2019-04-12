@@ -1,0 +1,86 @@
+*colorIT:                             #E3AB8D
+*colorBD:                             #F0E5DF
+*colorUL:                             #cd546c
+*VT100.colorBDMode:                   true
+*VT100.colorBD:                       red
+*VT100.colorULMode:                   true
+*VT100.colorUL:                       magenta
+*VT100.veryBoldColors:                6
+
+
+!special
+*background: #262729
+*foreground: #CECECE
+*cursorColor: #a0a0a0
+
+!black
+*color0:    #25374A
+*color8:    #3A526B
+!red
+*color1:    #BD4A4A
+*color9:    #CC6666
+!green
+*color2:    #B7CE42
+*color10:   #BDE077
+
+!yellow
+*color3: #FF0000
+*color11: #E04613
+
+!blue
+*color4: #188ED8
+*color12: #73B6D0
+
+!magenta
+*color5:    #F26B9E
+*color13:   #ff5879
+!cyan
+*color6:    #72AD8C
+*color14:   #9FE3BC
+
+!white
+*color7: #CECECE
+*color15: #FAFAFA
+
+
+
+
+!URxvt*.borderLess:				true
+URxvt*.cursorblink:				true
+URxvt*.cursorunderline:			false
+!URxvt*.depth:					32
+!URxvt*.dynamicColors:			on
+URxvt*.externalborder:			5
+!URxvt*.font:					xft:Tewi:size=9,xft:Iosevka:size=10
+URxvt*.font:					xft:Ttyp0:size=8:antialias=false
+URxvt*.internalBorder:			10
+URxvt*.jumpscroll:				false
+URxvt*.keysym.Control-Shift-Tab:perl:tabbedex:prev_tab
+URxvt*.keysym.Control-Tab: 		perl:tabbedex:next_tab
+URxvt*.keysym.Control-t: 		perl:tabbedex:new_tab
+URxvt*.keysym.C-u:				perl:url-select:select_next
+URxvt*.matcher.button:			1
+URxvt*.mouseWheelScrollpage:	true
+URxvt*.perl-ext-common:			matcher
+URxvt*.savelines:				900
+URxvt*.scrollBar:				false
+URxvt*.scrollstyle:				plain
+URxvt*shading:					30
+URxvt*inheritPixmap:			true
+URxvt*transparent:				true
+URxvt*.secondaryWheel: 			true
+URxvt*.tabbed.autohide: 		true
+URxvt*.tabbed.new-button: 		false
+URxvt*.tabbed.tabbar-bg:		0
+URxvt*.tabbed.tabbar-fg:		2
+URxvt*.tabbed.tab-bg:			3
+URxvt*.tabbed.tab-fg:			0
+!URxvt*.transparent:			true
+URxvt*.underlineURLs:			true
+URxvt*.url-launcher:			palemoon
+URxvt*.url-select.underline:	true
+!URxvt*.perl-ext-common:		tabbedex,matcher,url-select
+
+!Xterm escapes, word by word movement
+URxvt.keysym.Control-Left:    \033[1;5D
+URxvt.keysym.Control-Right:    \033[1;5C

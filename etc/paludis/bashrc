@@ -1,0 +1,119 @@
+CHOST="x86_64-pc-linux-gnu"
+CC=gcc
+CXX=g++
+#CFLAGS="-O3 -march=native -pipe -fgraphite-identity -floop-interchange -ftree-loop-distribution -floop-strip-mine -floop-block"
+CFLAGS="-O3 -march=native -pipe"
+LDFLAGS="-Wl,-O2 -Wl,--as-needed"
+CMAKE_VERBOSE_MAKEFILE="FALSE"
+CMAKE_INSTALL_MESSAGE="LAZY"
+CMAKE_VERBOSE="OFF"
+MAKEOPTS="-j2 VERBOSE=0 V=0"
+
+# # #
+# These packages are built with disabled LTO
+# # #
+nolto="
+app-admin/sudo
+app-antivirus/clamav
+app-arch/libarchive
+app-arch/tar
+app-crypt/gnupg
+app-crypt/pinentry
+dev-libs/elfutils
+dev-libs/libinput
+dev-libs/libtasn1
+dev-vcs/git
+dev-util/cmake
+media-gfx/imagemagick
+media-gfx/optipng
+media-libs/mesa
+net-misc/openssh
+net-p2p/transmission
+sys-apps/grep
+sys-apps/iproute2
+sys-apps/kexec-tools
+sys-apps/kmod
+sys-apps/texinfo
+sys-apps/util-linux
+sys-block/gparted
+sys-devel/gcc
+sys-devel/gdb
+sys-fs/eudev
+sys-libs/zlib
+x11-base/xorg-server
+x11-drivers/xf86-video-intel
+x11-libs/cairo
+x11-libs/gdk-pixbuf
+x11-libs/pango
+"
+
+#for package in $nolto
+#do
+#	if [[ "${CATEGORY}/${PN}" == "$package" ]] ; then
+#		CFLAGS="$CFLAGS -fno-lto -fno-use-linker-plugin"
+#		LDFLAGS="$LDFLAGS -fno-lto -fno-use-linker-plugin"
+#	fi
+#done
+
+
+clanglist="
+"
+
+# # #
+# These packages are built with safe CFLAGS and LDFLAGS
+# # #
+safeflags="
+## www-client/palemoon
+media-libs/libvorbis
+media-video/ffmpeg
+dev-python/numpy
+net-misc/wget
+media-gfx/sxiv
+media-libs/openexr
+## sys-devel/gcc
+x11-libs/libdrm
+"
+
+for package in $clanglist
+do
+	if [[ "${CATEGORY}/${PN}" == "$package" ]] ; then
+		CC="clang"
+		CXX="clang++"
+		CFLAGS="-O2 -pipe -flto=thin"
+		LDFLAGS="-Wl,-O2 -Wl,--as-needed"
+	fi
+done
+
+for package in $safeflags
+do
+	if [[ "${CATEGORY}/${PN}" == "$package" ]] ; then
+		CFLAGS="-O2 -pipe"
+		LDFLAGS="-Wl,-O1 -Wl,--as-needed"
+	fi
+done
+
+includedebug="
+sys-libs/glibc
+media-sound/deadbeef
+"
+
+for package in $includedebug
+do
+	if [[ "${CATEGORY}/${PN}" == "$package" ]] ; then
+		CFLAGS="-O2 -pipe -g"
+		LDFLAGS="-Wl,-O1 -Wl,--as-needed"
+		FEATURES="${FEATURES} splitdebug compressdebug installsources -nostrip"
+	fi
+done
+
+
+# # #
+# Every var with var inside goes last for applying changes
+# # #
+CXXFLAGS="$CFLAGS"
+CMAKE_C_COMPILER="$CC"
+CMAKE_CXX_COMPILER="$CXX"
+CMAKE_C_FLAGS="$CFLAGS"
+CMAKE_CXX_FLAGS="$CFLAGS"
+BUILD_CC="$CC"
+BUILD_CXX="$CXX"

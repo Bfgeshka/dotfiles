@@ -1,0 +1,13 @@
+# ┏┳┓╻┏ ┏━┓╻ ╻
+# ┃┃┃┣┻┓┗━┓┣━┫
+# ╹ ╹╹ ╹┗━┛╹ ╹
+
+HISTFILE="$HOME/.mksh_history"
+
+bind '^L'=clear-screen
+
+
+test -z $(pgrep transmission) && transmission-daemon
+test -z $(pgrep X) && xinit ~/.xinitrc -- -dpms -nolisten tcp -s 1440 -ardelay 200
+
+source ~/.profile

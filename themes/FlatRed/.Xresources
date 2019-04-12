@@ -1,0 +1,96 @@
+URxvt*.background:	[70]#2d2d2d
+URxvt*.borderLess:	true
+
+*background:  #2d2d2d
+*foreground:  #919191
+
+
+! BLACK
+*color0:      #303030
+*color8:      #5E5E5E
+
+! WHITE
+*color7:      #C6C6C6
+*color15:     #FFFFFF
+
+! RED
+*color1:      #C10023
+*color9:      #FF8781
+
+! YELLOW
+*color3:      #B51D2C
+*color11:     #FF948B
+
+! GREEN
+*color2:      #A83334
+*color10:     #FFA095
+
+! CYAN
+*color6:      #9A413D
+*color14:     #FFAAA0
+
+! BLUE
+*color4:      #8C4B46
+*color12:     #FEB2AA
+
+! MAGENTA
+*color5:      #7D534F
+*color13:     #EBBBB5
+
+
+URxvt*.cursorblink:	true
+URxvt*.cursorunderline:	false
+URxvt*.depth:					32
+URxvt*.dynamicColors:			on
+URxvt*.externalborder:			0
+URxvt*.font:					-*-tewi-medium-r-*-*-11-*-*-*-*-*-*-*
+!URxvt*.font:					Ohsnap.Icons-9
+!URxvt*.foreground:				#919191
+URxvt*.geometry:				228x48
+URxvt*.internalborder:			2
+URxvt*.jumpscroll:				false
+URxvt*.keysym.C-u:				perl:url-select:select_next
+URxvt*.matcher.button:			1
+URxvt*.mouseWheelScrollpage:	true
+URxvt*.perl-ext-common:			tabbedex,matcher,url-select
+URxvt*.secondaryWheel: 			true
+URxvt*.savelines:				1000
+URxvt*.scrollBar:				false
+URxvt*.scrollstyle:				plain
+URxvt*.shading:					110
+URxvt*.tabbed.tab-bg:			3
+URxvt*.tabbed.tab-fg:			0
+URxvt*.tabbed.tabbar-bg:		0
+URxvt*.tabbed.tabbar-fg:		2
+URxvt*.tabbed.new-button: 		false
+URxvt*.tabbed.autohide: 		true
+URxvt*.keysym.Control-t: perl:tabbedex:new_tab
+URxvt*.keysym.Control-Tab: perl:tabbedex:next_tab
+URxvt*.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+!URxvt*.transparent:			true
+!URxvt.kuake.hotkey: 			F10
+URxvt*.underlineURLs:			true
+URxvt*.url-launcher:			firefox
+URxvt*.url-select.underline:	true
+
+rofi.background:		#2d2d2d
+rofi.bordercolor:		#2d2d2d
+rofi.borderwidth:		0
+rofi.bw:				0
+rofi.columns:			1
+rofi.fixed-num-lines:	false
+rofi.font:				Ohsnap.Icons-9
+rofi.foreground:		#919191
+rofi.highlightbg:		#919191
+rofi.highlightfg:		#2d2d2d
+rofi.hmode:				false
+rofi.key:				mod1+grave
+rofi.opacity:			90
+rofi.padding:			2
+rofi.rkey:				mod4+F2
+rofi.skey:				mod4+F3
+rofi.ssh-set-title:		true
+rofi.terminal:			x-terminal-emulator
+rofi.width:				20
+rofi.xoffset:			0
+rofi.yoffset:			-2

@@ -1,0 +1,42 @@
+commit a3080a6c169be8701936815fc88fd70aec2929a0
+Author: Bfgeshka <bfg@derpy.ru>
+Date:   Sun Sep 3 23:03:36 2017 +0900
+
+    one-stroke predefined funcion
+
+diff --git a/main.c b/main.c
+index b4fd0fc..d4633de 100644
+--- a/main.c
++++ b/main.c
+@@ -608,12 +608,14 @@ void on_keypress(XKeyEvent *kev)
+ 
+ 	if (IsModifierKey(ksym))
+ 		return;
+-	if (ksym == XK_Escape && MODMASK(kev->state) == 0) {
+-		extprefix = False;
+-	} else if (extprefix) {
+-		run_key_handler(XKeysymToString(ksym), kev->state & ~sh);
+-		extprefix = False;
+-	} else if (key >= '0' && key <= '9') {
++//	if (ksym == XK_Escape && MODMASK(kev->state) == 0) {
++//		extprefix = False;
++//	} else if (extprefix) {
++//		run_key_handler(XKeysymToString(ksym), kev->state & ~sh);
++//		extprefix = False;
++//	} else if (key >= '0' && key <= '9') {
++	if ( ( ksym == XK_Escape && MODMASK(kev->state) == 0 ) || ( key >= '0' && key <= '9' ) )
++	{
+ 		/* number prefix for commands */
+ 		prefix = prefix * 10 + (int) (key - '0');
+ 		return;
+@@ -627,6 +629,10 @@ void on_keypress(XKeyEvent *kev)
+ 				dirty = true;
+ 		}
+ 	}
++
++	if ( i == ARRLEN(keys) && (!dirty) )
++		run_key_handler(XKeysymToString(ksym), kev->state & ~sh);
++
+ 	if (dirty)
+ 		redraw();
+ 	prefix = 0;

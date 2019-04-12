@@ -1,0 +1,36 @@
+background        no
+out_to_console    yes
+update_interval   1
+total_run_times   0
+short_units       no
+uppercase         no
+use_spacer        left
+
+#	special			▲▼    
+#	
+#	white			FEF7C5
+#	back_panel		85A7A2
+#	addit. fore		221819
+#	addit. back 	A6281A
+
+TEXT
+%{B\#ff85A7A2} \
+${if_up wlan0}%{B\#ff85A7A2}%{F\#ff221819}W %{B\#ffA6281A}%{F\#ff85A7A2}%{F\#ffFEF7C5}${upspeed wlan0} %{F\#ff339933}▲%{F\#ff993333}▼%{F\#ffFEF7C5}${downspeed wlan0} %{F\#ffA6281A}%{B\#ff85A7A2}${endif}\
+${if_up eth0}%{B\#ff85A7A2}%{F\#ff221819}E %{B\#ffA6281A}%{F\#ff85A7A2}%{F\#ffFEF7C5} ${upspeed eth0} %{F\#ff339933}▲%{F\#ff993333}▼%{F\#ffFEF7C5}${downspeed eth0} %{F\#ffA6281A}%{B\#ff85A7A2}${endif}\
+${if_match ${battery_percent} < 95 }%{B\#ff85A7A2}%{F\#ff221819}⭫%{B\#ffA6281A}%{F\#ff85A7A2}%{F\#ffFEF7C5} $battery_percent%%$battery_time %{F\#ffA6281A}%{B\#ff85A7A2}${endif}\
+%{B\#ff85A7A2}%{F\#ff221819} ☀ %{B\#ffA6281A}%{F\#ff85A7A2}%{F\#ffFEF7C5} ${execi 30 $HOME/.dwm/weather.sh} %{F\#ffA6281A}%{B\#ff85A7A2}%{F\#ffFEF7C5}\
+%{c} \
+${if_running deadbeef-gtkui}%{F\#ff221819}%{A4:rcsh $HOME/.dwm/bar_volup.sh:}%{A5:rcsh $HOME/.dwm/bar_voldown.sh:}%{A2:rcsh $HOME/.dwm/bar_mute.sh:}${exec deadbeef --nowplaying "%a -- %t (%e/%l)" 2>/dev/null}%{A}%{A}%{A}\
+${endif}\
+%{r}\
+${if_running deadbeef-gtkui}\
+%{F\#ffA6281A}%{B\#ff85A7A2}%{F\#ffFEF7C5}%{B\#ffA6281A} \
+%{A:sh $HOME/.dwm/bar_pr.sh:}⏪%{A} \
+%{A:sh $HOME/.dwm/bar_pp.sh:}⏯%{A} \
+%{A:sh $HOME/.dwm/bar_st.sh:}◾%{A} \
+%{A:sh $HOME/.dwm/bar_n.sh:}⏩%{A} \
+%{F\#ff85A7A2}%{B\#ff85A7A2}%{F\#ff221819} ♫\
+${endif} \
+%{F\#ffA6281A}%{B\#ff85A7A2}%{F\#ffFEF7C5}%{B\#ffA6281A} $mem %{F\#ff85A7A2}%{B\#ff85A7A2}%{F\#ff221819} ⭦ \
+%{F\#ffA6281A}%{B\#ff85A7A2}%{F\#ffFEF7C5}%{B\#ffA6281A} $swap %{F\#ff85A7A2}%{B\#ff85A7A2}%{F\#ff221819} ⭬ \
+%{F\#ffA6281A}%{B\#ff85A7A2}%{F\#ffFEF7C5}%{B\#ffA6281A} ${cpubar cpu0} %{F\#ff85A7A2}%{B\#ff85A7A2}%{F\#ff221819} ⭥ 

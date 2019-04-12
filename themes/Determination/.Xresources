@@ -1,0 +1,35 @@
+#include "/home/bfg/.config/colors/paints"
+
+*.background:					[88]#000000
+
+URxvt*.borderLess:				true
+URxvt*.cursorblink:				true
+URxvt*.cursorunderline:			false
+URxvt*.depth:					32
+URxvt*.dynamicColors:			off
+URxvt*.externalBorder:			0
+URxvt*.font:					xft:tewi:size=8
+URxvt*.internalBorder:			10
+URxvt*.iso14755:				false
+URxvt*.iso14755_52:				false
+URxvt*.jumpscroll:				false
+URxvt*.keysym.C-Down:			perl:font-size:decrease
+URxvt*.keysym.C-S-Down:			perl:font-size:decglobal
+URxvt*.keysym.C-S-Up:			perl:font-size:incglobal
+URxvt*.keysym.C-Up:				perl:font-size:increase
+URxvt*.keysym.C-u:				perl:url-select:select_next
+URxvt*.keysym.F11: 				perl:fullscreen:switch
+URxvt*.loginShell: 				false
+URxvt*.matcher.button:			1
+URxvt*.mouseWheelScrollpage:	true
+URxvt*.perl-ext-common:			matcher,url-select,fullscreen,font-size
+URxvt*.saveLines:				1000
+URxvt*.scrollBar:				false
+URxvt*.scrollstyle:				plain
+URxvt*.secondaryWheel: 			true
+URxvt*.shading:					100
+URxvt*.underlineURLs:			true
+URxvt*.urgentOnBell:			true
+URxvt*.url-launcher:			palemoon
+URxvt*.url-select.underline:	true
+URxvt*.visualBell:				true

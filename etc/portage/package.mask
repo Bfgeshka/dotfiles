@@ -1,0 +1,1 @@
+/etc/paludis/package_mask.conf

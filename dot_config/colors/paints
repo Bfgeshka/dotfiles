@@ -1,0 +1,32 @@
+! vim: set filetype=xdefaults :
+
+! - Author:   dkeg
+! - Title:    paints 
+! - Created:  2016
+
+*background:   #352f2f
+*foreground:   #c9c8c8
+!black
+*color0:       #3b3535
+*color8:       #4e4949
+!red
+*color1:       #854340
+*color9:       #854340
+!green
+*color2:       #668c71
+*color10:      #668c71
+!yellow
+*color3:       #b2885d
+*color11:      #b2885d
+!blue
+*color4:       #41647b
+*color12:      #41647b
+!magenta
+*color5:       #915556
+*color13:      #915556
+!cyan
+*color6:       #477578
+*color14:      #477578
+!white
+*color7:       #c9c8c8
+*color15:      #c9c8c8

@@ -1,0 +1,6 @@
+# master_repository = gentoo
+# location = /var/db/repos/paludis-overlay
+# sync = git://github.com/ciaranm/paludis-overlay.git
+# names_cache = /var/cache/paludis/names
+# write_cache = /var/cache/paludis/metadata
+# format = e
