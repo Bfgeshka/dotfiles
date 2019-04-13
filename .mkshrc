@@ -8,6 +8,27 @@ bind '^L'=clear-screen
 
 
 test -z $(pgrep transmission) && transmission-daemon
-test -z $(pgrep X) && xinit ~/.xinitrc -- -dpms -nolisten tcp -s 1440 -ardelay 200
+test -z "$(pgrep crond)" && crond
+
+if test -z "$(pgrep jackd)";
+then
+	sudo modprobe snd-aloop
+	bash ~/bin/pathadd/loop2jack &
+fi
+
+test -z "$(pgrep dwm)" && xinit ~/.xinitrc -- -dpms -nolisten tcp -s 1440 -ardelay 200
+
+# Colored man pages
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
+}
 
 source ~/.profile

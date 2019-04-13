@@ -7,6 +7,13 @@
 -- Add at most 5000 * 2 files when starting a file (before + after).
 MAXENTRIES = 5000
 
+local options = require 'mp.options'
+
+o = {
+    disabled = false
+}
+options.read_options(o)
+
 function Set (t)
     local set = {}
     for _, v in pairs(t) do set[v] = true end
@@ -15,7 +22,7 @@ end
 
 EXTENSIONS = Set {
     'mkv', 'avi', 'mp4', 'ogv', 'webm', 'rmvb', 'flv', 'wmv', 'mpeg', 'mpg', 'm4v', '3gp',
-    'ogv', 'm4a',
+    'mp3', 'wav', 'ogv', 'flac', 'm4a', 'wma',
 }
 
 mputils = require 'mp.utils'
@@ -46,10 +53,41 @@ table.filter = function(t, iter)
     end
 end
 
+-- splitbynum and alnumcomp from alphanum.lua (C) Andre Bogus
+-- Released under the MIT License
+-- http://www.davekoelle.com/files/alphanum.lua
+
+-- split a string into a table of number and string values
+function splitbynum(s)
+    local result = {}
+    for x, y in (s or ""):gmatch("(%d*)(%D*)") do
+        if x ~= "" then table.insert(result, tonumber(x)) end
+        if y ~= "" then table.insert(result, y) end
+    end
+    return result
+end
+
+function clean_key(k)
+    k = (' '..k..' '):gsub("%s+", " "):sub(2, -2):lower()
+    return splitbynum(k)
+end
+
+-- compare two strings
+function alnumcomp(x, y)
+    local xt, yt = clean_key(x), clean_key(y)
+    for i = 1, math.min(#xt, #yt) do
+        local xe, ye = xt[i], yt[i]
+        if type(xe) == "string" then ye = tostring(ye)
+        elseif type(ye) == "string" then xe = tostring(xe) end
+        if xe ~= ye then return xe < ye end
+    end
+    return #xt < #yt
+end
+
 function find_and_add_entries()
     local path = mp.get_property("path", "")
     local dir, filename = mputils.split_path(path)
-    if #dir == 0 then
+    if o.disabled or #dir == 0 then
         return
     end
     local pl_count = mp.get_property_number("playlist-count", 1)
@@ -65,20 +103,16 @@ function find_and_add_entries()
         return
     end
     table.filter(files, function (v, k)
+        if string.match(v, "^%.") then
+            return false
+        end
         local ext = get_extension(v)
         if ext == nil then
             return false
         end
         return EXTENSIONS[string.lower(ext)]
     end)
-    table.sort(files, function (a, b)
-        local len = string.len(a) - string.len(b)
-        if len ~= 0 then -- case for ordering filename ending with such as X.Y.Z
-            local ext = string.len(get_extension(a)) + 1
-            return string.sub(a, 1, -ext) < string.sub(b, 1, -ext)
-        end
-        return string.lower(a) < string.lower(b)
-    end)
+    table.sort(files, alnumcomp)
 
     if dir == "." then
         dir = ""

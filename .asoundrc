@@ -1,0 +1,82 @@
+# hardware 0,0 : used for ALSA playback
+pcm.loophw00 {
+  type hw
+  card Loopback
+  device 0
+  subdevice 0
+  format S16_LE
+  rate 44100
+}
+
+# playback PCM device: using loopback subdevice 0,0
+# Don't use a buffer size that is too small. Some apps
+# won't like it and it will sound crappy
+
+pcm.amix {
+  type dmix
+  ipc_key 219345
+  slave {
+    pcm loophw00
+    period_size 2048
+    periods 4
+  }
+}
+
+# software volume
+pcm.asoftvol {
+  type softvol
+  slave.pcm "amix"
+
+  control { name PCM }
+
+#  min_dB -51.0
+#  max_dB   0.0
+}
+
+# for jack alsa_in: looped-back signal at other ends
+pcm.cloop {
+  type hw
+  card Loopback
+  device 1
+  subdevice 0
+  format S16_LE
+  rate 44100
+}
+
+# hardware 0,1 : used for ALSA capture
+pcm.loophw01 {
+  type hw
+  card Loopback
+  device 0
+  subdevice 1
+  format S16_LE
+  rate 44100
+}
+
+# for jack alsa_out: looped-back signal at other end
+pcm.ploop {
+  type hw
+  card Loopback
+  device 1
+  subdevice 1
+  format S16_LE
+  rate 44100
+}
+
+# duplex device combining our PCM devices defined above
+pcm.aduplex {
+  type asym
+  playback.pcm "asoftvol"
+  capture.pcm "loophw01"
+}
+
+# default device
+pcm.!default {
+  type plug
+  slave.pcm aduplex
+
+  hint {
+       show on
+       description "Duplex Loopback"
+  }
+}

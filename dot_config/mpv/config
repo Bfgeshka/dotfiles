@@ -1,19 +1,17 @@
-ao=alsa
-autofit-larger=100%x740
-autofit=1280x720
-cache = 30720
-cache-initial = 512
+# cache = 30720
+# cache-initial = 512
 cache-secs = 60
-loop-file
+
+# For thumbnailer script
+# osc=no
 
 osd-border-color="#FF262626"
 osd-border-size=3.2
 osd-color="#CCFFFFFF"
 osd-duration=800
-
-osd-font-size=28
-#osd-font="M+ 2c"
-osd-font="Ubuntu"
+osd-font-size=20
+#osd-font="Ubuntu"
+osd-font="M+ 2p medium"
 osd-shadow-color="#33000000"
 osd-shadow-offset=1
 osd-spacing=0.5
@@ -21,29 +19,61 @@ osd-spacing=0.5
 slang = ru,en
 sub-border-color="#FF262626"
 sub-border-size=3.2
-sub-codepage = utf8:cp1251
+# sub-codepage = utf8:cp1251
 sub-color = "#FFAAAA00"
-sub-font-size = 24
+sub-font-size = 32
 sub-font = "M+ 2c"
-# sub-font = "Ubuntu"
 sub-gauss = .75
 sub-margin-y = 30
 sub-shadow-color = "#33000000"
 sub-shadow-offset = 1
 sub-spacing = 0.8
 
-user-agent = "Mozilla/5.0"
+ao=jack
 volume = 100
 volume-max = 200
 
-hwdec=vaapi
+autofit-larger=100%x1000
+# autofit=1366x768
+autofit=1600x900
+deband = no
 
-#vo = opengl,xv,vaapi
-vo = opengl
-#opengl-pbo
-#opengl-backend = x11
-#opengl-es = no
-# opengl-gamma = 0.8
 ytdl
+user-agent = "Mozilla/5.0"
+screenshot-format=png
 
 keep-open=always
+loop-file
+
+blend-subtitles=video
+blend-subtitles=yes
+
+# scale=ewa_lanczossharp
+# x11-bypass-compositor=yes
+
+## ogl
+vo=gpu
+gpu-context=x11egl
+# gpu-api=opengl
+hwdec=vaapi
+# opengl-pbo=yes
+# profile=gpu-hq
+
+## vulkan
+# gpu-api=vulkan
+# gpu-context=x11vk
+# hdr-compute-peak=no
+# hwdec=vdpau
+# profile=opengl-hq
+# vo=opengl
+# vulkan-async-transfer=yes
+# vulkan-async-compute=yes
+# vulkan-queue-count=8
+# vulkan-swap-mode=immediate
+# spirv-compiler=shaderc
+
+# vd-lavc-dr=yes
+# vo=vaapi
+# hwdec=vaapi
+
+audio-channels=stereo
